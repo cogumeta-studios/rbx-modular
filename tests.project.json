@@ -1,0 +1,16 @@
+{
+  "name": "modular Test-Runner",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "modular": {
+        "$path": "lib"
+      }
+    },
+    "ServerScriptService": {
+      "Tests": {
+        "$path": "tests"
+      }
+    }
+  }
+}

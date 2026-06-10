@@ -1,0 +1,6 @@
+{
+  "name": "modular",
+  "tree": {
+    "$path": "lib"
+  }
+}
