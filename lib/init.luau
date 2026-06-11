@@ -17,8 +17,8 @@ function Modular.Init(dir: Instance, initFn: string?)
 
 	for module in modules do
 		local compiled = (require)(module)
-		if typeof(compiled) ~= "table" then return end
-		if not compiled[initFn or "Init"] then return end
+		if typeof(compiled) ~= "table" then continue end
+		if not compiled[initFn or "Init"] then continue end
 		compiled[initFn or "Init"]()
 	end
 end
