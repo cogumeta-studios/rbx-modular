@@ -10,16 +10,17 @@ function Modular.Init(dir: Instance, initFn: string?)
 		local replace = Replace:Clone()
 		replace.Name = module.Name
 		replace.Parent = module.Parent :: any
-		module.Name = "Main"
-		module.Parent = replace
+		module.Name = `MODULAR_{module.Name}`
 		modules[module] = true
 	end
 
 	for module in modules do
-		local compiled = (require)(module)
-		if typeof(compiled) ~= "table" then continue end
-		if not compiled[initFn or "Init"] then continue end
-		compiled[initFn or "Init"]()
+		xpcall(function()
+			local compiled = (require)(module)
+			if typeof(compiled) ~= "table" then return end
+			if not compiled[initFn or "Init"] then return end
+			compiled[initFn or "Init"]()
+		end, function(err) end)
 	end
 end
 
